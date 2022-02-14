@@ -1,5 +1,5 @@
 <?php
-    $path = "https://api.telegram.org/bot5224778305:AAF6INif-5hT8WgcjTtaUAdIh63iItyPDcA;
+    $path = "https://api.telegram.org/bot5224778305:AAF6INif-5hT8WgcjTtaUAdIh63iItyPDcA";
     $update = json_decode(file_get_contents("php://input"), TRUE);
 
     $chatId = $update["message"]["chat"]["id"];
