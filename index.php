@@ -6,9 +6,9 @@
    $message = $update["message"]["text"];
 
    if (strpos($message, "/start") === 0) {
-/*
+
       file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=Bienvenido");
-      $keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup([['/go', '/status']], null, true);
+      /*$keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup([['/go', '/status']], null, true);
  
       $bot->sendMessage($message->getChat()->getId(), $message, false, null, null, $keyboards);
       });*/
