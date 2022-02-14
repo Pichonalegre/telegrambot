@@ -13,11 +13,14 @@
       $bot->sendMessage($message->getChat()->getId(), $message, false, null, null, $keyboards);
       });*/
    }
+   if (strpos($message, "/stream") === 0) {
+
+      file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=www.twitch.tv/pichon_alegre");
+   }
     
    if (strpos($message, "/weather") === 0) {
       $location = substr($message, 9);
       $weather = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&appid=mytoken"), TRUE)["weather"][0]["main"];
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Este es el tiempo en ".$location.": ". $weather);
-      echo "hola";
    }
 ?> 
