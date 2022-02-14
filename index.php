@@ -16,7 +16,7 @@
     
    if (strpos($message, "/weather") === 0) {
       $location = substr($message, 9);
-      $weather = json_decode(file_get_contents("api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}"), TRUE)["weather"][0]["main"];
+      $weather = json_decode(file_get_contents("http://api.openweathermap.org/data/2.5/weather?id=524901&appid={API key}&lang={lang}"), TRUE)["weather"][0]["main"];
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Este es el tiempo en ".$location.": ". $weather);
    }
 ?> 
