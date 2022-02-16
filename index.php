@@ -24,7 +24,7 @@
       $weather2 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["description"];
       $weather3 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["main"][0]["temp_min"];
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Este es el tiempo en ".$location.": ". $weather1);
-      file_get_contents($weather2);
-      file_get_contents($weather3);
+      file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Esta es la descripcion en ".$location.": ". $weather2);
+      file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Esta es la temp minima en ".$location.": ". $weather3);
    }
 ?> 
