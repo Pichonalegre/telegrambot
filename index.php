@@ -17,15 +17,21 @@
 
       file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=www.twitch.tv/pichon_alegre");
    }
-    
+   
    if (strpos($message, "/tiempo") === 0) {
       $location = substr($message, 8);
       $weather1 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["main"];
       $weather2 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["description"];
       $weather3 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["wind"]["speed"];
+      $tarkov = json_decode(file_get_contents("https://tarkov-market.com/api/v1/item?q=btc&x-api-key=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["name"];
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Este es el tiempo en ".$location.": ". $weather1);
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Descripcion: ". $weather2);
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Velocidad: ". $weather3);
-      echo "hola";
+
    }
+
+   if (strpos($message, "/tarkov") === 0) {
+      file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Velocidad: ". $tarkov);
+   }
+
 ?> 
