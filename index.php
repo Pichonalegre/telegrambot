@@ -10,7 +10,7 @@
       file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=Comandos:");
       file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=/stream Visita mis streams en twitch");
       file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=/tiempo \"localizacion\" consulta el tiempo");
-      file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=/tarkov \"item\" Consulta el precio del item introducido en el juego Tarkov");
+      file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=/news Consulta de noticias");
    }
    
    if (strpos($message, "/stream") === 0) {
@@ -34,7 +34,7 @@
    if (strpos($message, "/news") === 0) {
       $item = substr($message, 8);
       $news = json_decode(file_get_contents("http://api.mediastack.com/v1/news?access_key=85b7a0cec862c55c0bd53253323aef03"), TRUE)["data"]["url"];
-      for ($i=0; $i <24 ; $i++) { 
+      for ($i=0; $i <25 ; $i++) { 
          $news = json_decode(file_get_contents("http://api.mediastack.com/v1/news?access_key=85b7a0cec862c55c0bd53253323aef03"), TRUE)["data"][$i]["url"];
          file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=". $news);
       }
