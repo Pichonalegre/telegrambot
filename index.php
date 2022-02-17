@@ -26,5 +26,6 @@
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Este es el tiempo en ".$location.": ". $weather1);
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Descripcion: ". $weather2);
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Velocidad: ". $weather3);
+      echo "hola";
    }
 ?> 
