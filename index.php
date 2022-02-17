@@ -31,7 +31,8 @@
    }
 
    if (strpos($message, "/tarkov") === 0) {
-      file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=precio de ".$message.": ". $tarkov);
+      $item = substr($message, 8);
+      file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=precio de ".$item.": ". $tarkov);
    }
 
 ?> 
