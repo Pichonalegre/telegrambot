@@ -6,7 +6,8 @@
    $message = $update["message"]["text"];
 
    if (strpos($message, "/start") === 0) {
-      file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=Bienvenido" );
+      file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=Bienvenid@!" );
+      file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=Comandos:");
       file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=Comandos:");
       file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=/Stream Visita mis streams en twitch");
       file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=/tiempo \"localizacion\" consulta el tiempo");
@@ -33,7 +34,7 @@
 
    if (strpos($message, "/news") === 0) {
       $item = substr($message, 8);
-      $news = json_decode(file_get_contents("http://api.mediastack.com/v1/news?access_key=85b7a0cec862c55c0bd53253323aef03"), TRUE)["data"]["title"];
+      $news = json_decode(file_get_contents("http://api.mediastack.com/v1/news?access_key=85b7a0cec862c55c0bd53253323aef03"), TRUE)["data"][0]["url"];
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=noticias: ". $news);
 
    }
