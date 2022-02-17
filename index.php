@@ -15,19 +15,23 @@
    
    if (strpos($message, "/tiempo") === 0) {
       $location = substr($message, 8);
-      $weather1 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["main"];
-      $weather2 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["description"];
-      $weather3 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["wind"]["speed"];
+      $weather1 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["main"];
+      $weather2 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["description"];
+      $weather3 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["wind"]["speed"];
+      $weather4 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["main"]["temp_max"];
+      $weather5 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["main"]["temp_min"];
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Este es el tiempo en ".$location.": ". $weather1);
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Descripcion: ". $weather2);
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Velocidad: ". $weather3);
+      file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=temp_maxima: ". $weather4);
+      file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=temp_minima: ". $weather5);
    }
 
    if (strpos($message, "/news") === 0) {
       $item = substr($message, 8);
       $news = json_decode(file_get_contents("http://api.mediastack.com/v1/news?access_key=85b7a0cec862c55c0bd53253323aef03"), TRUE)["data"]["title"];
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=noticias: ". $news);
-      echo "string";
+
    }
 
 ?> 
