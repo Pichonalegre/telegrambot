@@ -34,7 +34,7 @@
 
    if (strpos($message, "/news") === 0) {
       $item = substr($message, 8);
-      $news = json_decode(file_get_contents("http://api.mediastack.com/v1/news?access_key=85b7a0cec862c55c0bd53253323aef03"), TRUE)["data"][0]["url"];
+      $news = json_decode(file_get_contents("http://api.mediastack.com/v1/news?access_key=85b7a0cec862c55c0bd53253323aef03"), TRUE)["data"][0]["url"][2];
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=noticias: ". $news);
 
    }
