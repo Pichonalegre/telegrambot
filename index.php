@@ -9,8 +9,8 @@
       file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=Bienvenido");
       file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=Comandos:");
       file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=/Stream Visita mis streams en twitch");
-      file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=/tiempo + \"localizacion\" consulta el tiempo");
-      file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=/tarkov + \"item\" Consulta el precio del item introducido en el juego Tarkov");
+      file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=/tiempo \"localizacion\" consulta el tiempo");
+      file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=/tarkov \"item\" Consulta el precio del item introducido en el juego Tarkov");
    }
    
    if (strpos($message, "/stream") === 0) {
