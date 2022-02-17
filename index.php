@@ -35,10 +35,10 @@
    if (strpos($message, "/news") === 0) {
       $item = substr($message, 8);
       $news = json_decode(file_get_contents("http://api.mediastack.com/v1/news?access_key=85b7a0cec862c55c0bd53253323aef03");
-      for ($i=0; $i < 5; $i++) { 
+      /*for ($i=0; $i < 5; $i++) { 
          $news = json_decode(file_get_contents("http://api.mediastack.com/v1/news?access_key=85b7a0cec862c55c0bd53253323aef03"), TRUE)["data"][$i]["url"];
          file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=noticias: ". $news);
-      }      
+      } */     
 
    }
 
