@@ -22,7 +22,7 @@
       $weather5 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["main"]["temp_min"];
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Este es el tiempo en ".$location.": ". $weather1);
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Descripción: ". $weather2);
-      file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Velocidad: ". $weather3);
+      file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Velocidad: ". $weather3."Km/h");
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=temperatura maxima: ". $weather4."º");
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=temperatura minima: ". $weather5."º");
    }
