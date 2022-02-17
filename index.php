@@ -6,7 +6,7 @@
    $message = $update["message"]["text"];
 
    if (strpos($message, "/start") === 0) {
-      file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=Bienvenido /n");
+      file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=Bienvenido \n asd" );
       file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=Comandos:");
       file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=/Stream Visita mis streams en twitch");
       file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=/tiempo \"localizacion\" consulta el tiempo");
