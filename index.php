@@ -6,15 +6,10 @@
    $message = $update["message"]["text"];
 
    if (strpos($message, "/start") === 0) {
-
       file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=Bienvenido");
-      /*$keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup([['/go', '/status']], null, true);
- 
-      $bot->sendMessage($message->getChat()->getId(), $message, false, null, null, $keyboards);
-      });*/
    }
+   
    if (strpos($message, "/stream") === 0) {
-
       file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=www.twitch.tv/pichon_alegre");
    }
    
@@ -26,7 +21,6 @@
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Este es el tiempo en ".$location.": ". $weather1);
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Descripcion: ". $weather2);
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Velocidad: ". $weather3);
-
    }
 
    if (strpos($message, "/news") === 0) {
