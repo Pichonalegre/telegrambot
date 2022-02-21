@@ -13,9 +13,9 @@
       file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=/news Consulta de noticias");
    }
    
-   /*if (strpos($message, "/stream") === 0) {
+   if (strpos($message, "/stream") === 0) {
       file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=www.twitch.tv/pichon_alegre");
-   }*/
+   }
    
    if (strpos($message, "/tiempo") === 0) {
       $location = substr($message, 8);
