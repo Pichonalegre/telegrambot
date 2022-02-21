@@ -19,7 +19,7 @@
   
    if (strpos($message, "/tiempo") === 0) {
       $location = substr($message, 8);
-      $respuesta=file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=tiempo de que ciudad?");
+      $respuesta=file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=¿tiempo de que ciudad?");
 
       sendMessage($chatid, $respuesta, true);
 
@@ -49,7 +49,7 @@
    function sendMessage($chatid, $response, $contestacion) {
       if($contestacion == TRUE) {
          $reply_mark = array('force_reply' => True);
-         $url = $GLOBALS['token'].'/sendMessage?chat_id='.$chatid.'&parse_mode=HTML&reply_markup='.json_encode($reply_mark).'&text='.urlencode($response);
+         $url = $GLOBALS['token'].'/sendMessage?chat_id='.$chatid.'&parse_mode=HTML&reply_markup='.json_encode($respuesta).'&text='.urlencode($response);
       }else $url = $GLOBALS['token'].'/sendMessage?chat_id='.$chatid.'&parse_mode=HTML&text='.urlencode($response);
     
       file_get_contents($url);
