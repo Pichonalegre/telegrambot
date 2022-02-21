@@ -19,9 +19,10 @@
   
    if (strpos($message, "/tiempo") === 0) {
       $location = substr($message, 8);
-   
-      sendMessage($chatid, $location, true);
-      
+      $respuesta=file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=tiempo de que ciudad?");
+
+      sendMessage($chatid, $respuesta, true);
+
    
       $localizacion=json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["name"];
       $weather1 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["main"];
