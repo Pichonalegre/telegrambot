@@ -35,7 +35,7 @@
    if (strpos($message, "/news") === 0) {
       $item = substr($message, 8);
       //$news = json_decode(file_get_contents("http://api.mediastack.com/v1/news?access_key=85b7a0cec862c55c0bd53253323aef03"), TRUE)["data"]["url"];
-      $news = json_decode(file_get_contents("https://hacker-news.firebaseio.com/v0/"), TRUE)["data"]["url"];
+      $news = json_decode(file_get_contents("https://content.guardianapis.com/search?page=2&q=debate&5224778305:AAF6INif-5hT8WgcjTtaUAdIh63iItyPDcA=test"), TRUE)["data"]["url"];
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=". $news);
       /*for ($i=0; $i <10 ; $i++) { 
          $news = json_decode(file_get_contents("http://api.mediastack.com/v1/news?access_key=85b7a0cec862c55c0bd53253323aef03"), TRUE)["data"][$i]["url"];
