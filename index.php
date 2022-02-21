@@ -19,20 +19,20 @@
   
    if (strpos($message, "/tiempo") === 0) {
       $location = substr($message, 8);
-      if($contestacion == TRUE) {
-         sendMessage($chatid, $message, true);
-      }
-      $localizacion=json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["name"];
-      $weather1 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["main"];
-      $weather2 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["description"];
-      $weather3 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["wind"]["speed"];
-      $weather4 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["main"]["temp_max"];
-      $weather5 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["main"]["temp_min"];
-      file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=Este es el tiempo en ".$localizacion.": ". $weather1);
-      file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=Descripción: ". $weather2);
-      file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=Velocidad: ". $weather3."Km/h");
-      file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=temperatura maxima: ". $weather4."º");
-      file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=temperatura minima: ". $weather5."º");
+      
+      sendMessage($chatid, $message, false);
+      
+      // $localizacion=json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["name"];
+      // $weather1 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["main"];
+      // $weather2 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["description"];
+      // $weather3 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["wind"]["speed"];
+      // $weather4 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["main"]["temp_max"];
+      // $weather5 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["main"]["temp_min"];
+      // file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=Este es el tiempo en ".$localizacion.": ". $weather1);
+      // file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=Descripción: ". $weather2);
+      // file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=Velocidad: ". $weather3."Km/h");
+      // file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=temperatura maxima: ". $weather4."º");
+      // file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=temperatura minima: ". $weather5."º");
    }
 
    if (strpos($message, "/news") === 0) {
@@ -43,7 +43,7 @@
       }
    }
 
-   function sendMessage($chatid, $response, $contestacion) {
+   function sendMessage($chatid, $message, $contestacion) {
       if($contestacion == TRUE) {
          $reply_mark = array('force_reply' => True);
          $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatid.'&parse_mode=HTML&reply_markup='.json_encode($reply_mark).'&text='.urlencode($response);
