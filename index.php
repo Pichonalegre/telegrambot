@@ -20,7 +20,7 @@
    if (strpos($message, "/tiempo") === 0) {
       $location = substr($message, 8);
       
-      sendMessage($chatid, $message, false);
+      //sendMessage($chatid, $message, false);
       
       // $localizacion=json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["name"];
       // $weather1 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["main"];
@@ -48,7 +48,7 @@
          $reply_mark = array('force_reply' => True);
          $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatid.'&parse_mode=HTML&reply_markup='.json_encode($reply_mark).'&text='.urlencode($response);
       }else $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatid.'&parse_mode=HTML&text='.urlencode($response);
-      //echo $url.$contestacion.$message;      
+      echo $url.$contestacion.$message;      
       file_get_contents($url);
    }
 ?> 
