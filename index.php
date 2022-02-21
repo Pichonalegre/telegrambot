@@ -3,6 +3,7 @@
    $update = json_decode(file_get_contents("php://input"), TRUE);
    $chatid = $update["message"]["chat"]["id"];
    $message = $update["message"]["text"];
+   $reply = $update['message']['reply_to_message']['text'];
 
    if (strpos($message, "/start") === 0) {
       file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=Bienvenid@!" );
