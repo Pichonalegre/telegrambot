@@ -19,9 +19,9 @@
   
    if (strpos($message, "/tiempo") === 0) {
       $location = substr($message, 8);
-      if($contestacion == TRUE) {
-         sendMessage($chatid, $message, true);
-      }
+         
+      sendMessage($chatid, $message, true);
+      
       $localizacion=json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["name"];
       $weather1 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["main"];
       $weather2 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["description"];
@@ -41,8 +41,6 @@
          $news = json_decode(file_get_contents("https://content.guardianapis.com/search?api-key=d07f7521-83d3-46be-af37-2b0831915a1c"), TRUE)["response"]["results"][$i]["webUrl"];
       file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=". $news);
       }
-
-
    }
 
    function sendMessage($chatid, $response, $contestacion) {
