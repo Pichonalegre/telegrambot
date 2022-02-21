@@ -3,7 +3,7 @@
    $update = json_decode(file_get_contents("php://input"), TRUE);
    $chatid = $update["message"]["chat"]["id"];
    $message = $update["message"]["text"];
-   $reply = $update['message']['reply_to_message']['text'];
+   $contestacion = $update['message']['reply_to_message']['text'];
 
    if (strpos($message, "/start") === 0) {
       file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=Bienvenid@!" );
@@ -19,7 +19,9 @@
   
    if (strpos($message, "/tiempo") === 0) {
       $location = substr($message, 8);
-      sendMessage($chatid, $message, true);
+      if($contestacion == TRUE) {
+         sendMessage($chatid, $message, true);
+      }
       $localizacion=json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["name"];
       $weather1 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["main"];
       $weather2 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["description"];
@@ -39,11 +41,10 @@
          $news = json_decode(file_get_contents("https://content.guardianapis.com/search?api-key=d07f7521-83d3-46be-af37-2b0831915a1c"), TRUE)["response"]["results"][$i]["webUrl"];
       file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=". $news);
       }
-     
    }
 
-   function sendMessage($chatid, $response, $repl) {
-      if($repl == TRUE) {
+   function sendMessage($chatid, $response, $contestacion) {
+      if($contestacion == TRUE) {
          $reply_mark = array('force_reply' => True);
          $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatid.'&parse_mode=HTML&reply_markup='.json_encode($reply_mark).'&text='.urlencode($response);
       }else $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatid.'&parse_mode=HTML&text='.urlencode($response);
