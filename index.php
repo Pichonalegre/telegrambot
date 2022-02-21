@@ -17,11 +17,11 @@
       file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=www.twitch.tv/pichon_alegre");
    }
   
-   if (strpos( "/tiempo") === 0) {
+   if (strpos($message, "/tiempo") === 0) {
       $location = substr($message, 8);
-      
+   
       sendMessage($chatid, $location, true);
-
+      
    
       $localizacion=json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["name"];
       $weather1 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["main"];
@@ -30,11 +30,11 @@
       $weather4 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["main"]["temp_max"];
       $weather5 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["main"]["temp_min"];
 
-      // file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=Este es el tiempo en ".$localizacion.": ". $weather1);
-      // file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=Descripción: ". $weather2);
-      // file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=Velocidad: ". $weather3."Km/h");
-      // file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=temperatura maxima: ". $weather4."º");
-      // file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=temperatura minima: ". $weather5."º");
+      file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=Este es el tiempo en ".$localizacion.": ". $weather1);
+      file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=Descripción: ". $weather2);
+      file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=Velocidad: ". $weather3."Km/h");
+      file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=temperatura maxima: ". $weather4."º");
+      file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=temperatura minima: ". $weather5."º");
    }
 
    if (strpos($message, "/news") === 0) {
