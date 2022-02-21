@@ -34,8 +34,8 @@
 
    if (strpos($message, "/news") === 0) {
       $item = substr($message, 8);
-      //$news = json_decode(file_get_contents("http://api.mediastack.com/v1/news?access_key=85b7a0cec862c55c0bd53253323aef03"), TRUE)["data"]["url"];
-      $news = json_decode(file_get_contents("https://content.guardianapis.com/search?api-key=d07f7521-83d3-46be-af37-2b0831915a1c"), TRUE)["response"][0]["results"][0]["webUrl"];
+      $news = json_decode(file_get_contents("http://api.mediastack.com/v1/news?access_key=85b7a0cec862c55c0bd53253323aef03"), TRUE)["data"]["url"];
+      //$news = json_decode(file_get_contents("https://content.guardianapis.com/search?api-key=d07f7521-83d3-46be-af37-2b0831915a1c"), TRUE)["response"][0]["results"][0]["webUrl"];
       file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=". $news);
       /*for ($i=0; $i <10 ; $i++) { 
          $news = json_decode(file_get_contents("http://api.mediastack.com/v1/news?access_key=85b7a0cec862c55c0bd53253323aef03"), TRUE)["data"][$i]["url"];
