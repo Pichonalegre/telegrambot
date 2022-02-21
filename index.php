@@ -1,43 +1,54 @@
 <?php
    $token = "https://api.telegram.org/bot5224778305:AAF6INif-5hT8WgcjTtaUAdIh63iItyPDcA";
    $update = json_decode(file_get_contents("php://input"), TRUE);
-
-   $chatId = $update["message"]["chat"]["id"];
+   $chatid = $update["message"]["chat"]["id"];
    $message = $update["message"]["text"];
+   $reply = $update['message']['reply_to_message']['text'];
 
    if (strpos($message, "/start") === 0) {
-      file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=Bienvenid@!" );
-      file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=Comandos:");
-      file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=/stream Visita mis streams en twitch");
-      file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=/tiempo \"localizacion\" consulta el tiempo");
-      file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=/news Consulta de noticias");
+      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=Bienvenid@!" );
+      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=Comandos:");
+      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=/stream Visita mis streams en twitch");
+      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=/tiempo \"localizacion\" consulta el tiempo");
+      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=/news Consulta de noticias");
    }
    
    if (strpos($message, "/stream") === 0) {
-      file_get_contents($token."/sendMessage?chat_id=".$chatId."&text=www.twitch.tv/pichon_alegre");
+      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=www.twitch.tv/pichon_alegre");
    }
-   
+  
    if (strpos($message, "/tiempo") === 0) {
       $location = substr($message, 8);
+      sendMessage($chatId, $response, TRUE);
+      $reply
       $localizacion=json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["name"];
       $weather1 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["main"];
       $weather2 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["weather"][0]["description"];
       $weather3 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["wind"]["speed"];
       $weather4 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["main"]["temp_max"];
       $weather5 = json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["main"]["temp_min"];
-      file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Este es el tiempo en ".$localizacion.": ". $weather1);
-      file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Descripción: ". $weather2);
-      file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=Velocidad: ". $weather3."Km/h");
-      file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=temperatura maxima: ". $weather4."º");
-      file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=temperatura minima: ". $weather5."º");
+      file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=Este es el tiempo en ".$localizacion.": ". $weather1);
+      file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=Descripción: ". $weather2);
+      file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=Velocidad: ". $weather3."Km/h");
+      file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=temperatura maxima: ". $weather4."º");
+      file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=temperatura minima: ". $weather5."º");
    }
 
    if (strpos($message, "/news") === 0) {
       $item = substr($message, 8);
       for ($i=0; $i <10 ; $i++) { 
          $news = json_decode(file_get_contents("https://content.guardianapis.com/search?api-key=d07f7521-83d3-46be-af37-2b0831915a1c"), TRUE)["response"]["results"][$i]["webUrl"];
-      file_get_contents($token."/sendmessage?chat_id=".$chatId."&text=". $news);
+      file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=". $news);
       }
      
+   }
+
+   function sendMessage($chatId, $response, $repl) {
+      if($repl == TRUE) {
+         $reply_mark = array('force_reply' => True);
+         $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatid.'&parse_mode=HTML&reply_markup='.json_encode($reply_mark).'&text='.urlencode($response);
+      }else $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
+    
+      file_get_contents($url);
    }
 ?> 
