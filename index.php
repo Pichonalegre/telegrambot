@@ -20,7 +20,7 @@
    if (strpos("/tiempo") === 0) {
       $message="¿De que parte del mundo desea saber el tiempo?"
       
-      sendMessage($chatid, $location, true);
+      sendMessage($chatid, $message, true);
 
    
       $localizacion=json_decode(file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=".$location."&lang=es&units=metric&appid=a32b06b98aa8fdc06e5902d229eb2055"), TRUE)["name"];
