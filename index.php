@@ -17,8 +17,8 @@
       file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=www.twitch.tv/pichon_alegre");
    }
   
-   if (strpos($message, "/tiempo") === 0) {
-      $location = substr($message, 8);
+   if (strpos("/tiempo") === 0) {
+      $message="¿De que parte del mundo desea saber el tiempo?"
       
       sendMessage($chatid, $location, true);
 
