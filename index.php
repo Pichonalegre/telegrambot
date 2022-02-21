@@ -27,7 +27,6 @@
   
    if (strpos($message, "/tiempo") === 0) {
       $location = substr($message, 8);
-      file_get_contents($token."/sendmessage?chat_id=".$chatid."&text=¿tiempo de que ciudad?");
       $respuesta="¿tiempo de que ciudad?";
       sendMessage($chatid, $respuesta, true);
 
