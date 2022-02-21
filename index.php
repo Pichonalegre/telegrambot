@@ -43,12 +43,12 @@
       }
    }
 
-   function sendMessage($chatid, $message, $contestacion) {
+   function sendMessage($chatid, "$message", $contestacion) {
       if($contestacion == TRUE) {
          $reply_mark = array('force_reply' => True);
          $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatid.'&parse_mode=HTML&reply_markup='.json_encode($reply_mark).'&text='.urlencode($response);
       }else $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatid.'&parse_mode=HTML&text='.urlencode($response);
-    
+      echo $url.$contestacion.$message;      
       file_get_contents($url);
    }
 ?> 
