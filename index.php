@@ -9,7 +9,7 @@
 
 switch($message){
    case "/start":
-      echo "hola";
+      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=Hola");
       break;
    
 }
