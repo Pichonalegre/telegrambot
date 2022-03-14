@@ -9,7 +9,14 @@
 
 switch($message){
    case "/start":
-      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=Hola");
+      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=Bienvenid@!" );
+      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=Comandos:");
+      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=/stream Visita mis streams en twitch");
+      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=/tiempo \"localizacion\" consulta el tiempo");
+      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=/news Consulta de noticias");
+      break;
+   case "/stream":
+      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=www.twitch.tv/pichon_alegre");
       break;
    
 }
@@ -31,7 +38,7 @@ switch($message){
       file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=/tiempo \"localizacion\" consulta el tiempo");
       file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=/news Consulta de noticias");
    }
-   */
+   
    if (strpos($message, "/stream") === 0) {
       file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=www.twitch.tv/pichon_alegre");
    }
@@ -94,5 +101,5 @@ switch($message){
       file_get_contents($url);
    }
 
-
+*/
 ?> 
