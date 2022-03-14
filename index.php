@@ -7,7 +7,7 @@
 
 
 
-switch($message){
+switch(strpos($message, "/stream") === 0){
    default:
       file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=Bienvenid@!" );
       file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=Comandos:");
