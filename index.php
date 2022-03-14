@@ -7,18 +7,11 @@
 
 
 
-switch(strpos($message, "/stream") === 0){
-   default:
-      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=Bienvenid@!" );
-      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=Comandos:");
-      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=/stream Visita mis streams en twitch");
-      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=/tiempo \"localizacion\" consulta el tiempo");
-      file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=/news Consulta de noticias");
-      break;
-
+switch($message){
    case "/start":
       echo "hola";
       break;
+   
 }
 
 
