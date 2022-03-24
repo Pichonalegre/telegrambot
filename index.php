@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="google-site-verification" content="JYJAEsOQqDkcXQgoYqq67q4wlCwv7WEzkOuz2tpEg4Y" />
-      <title>Document</title>
-      
-   </head>
-   <body>
+
    <?php
    $token = "https://api.telegram.org/bot5224778305:AAF6INif-5hT8WgcjTtaUAdIh63iItyPDcA";
    $update = json_decode(file_get_contents("php://input"), TRUE);
@@ -114,5 +104,3 @@ switch($message){
 
 */
 ?> 
-   </body>
-</html>
