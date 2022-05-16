@@ -20,6 +20,8 @@ switch($message){
       file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=www.twitch.tv/pichon_alegre");
       break;
    
+
+      
 }
 
 
@@ -103,4 +105,5 @@ switch($message){
    }
 
 */
+//hola
 ?> 
