@@ -1,22 +1,22 @@
 
    <?php
-   $token = "https://api.telegram.org/bot5224778305:AAF6INif-5hT8WgcjTtaUAdIh63iItyPDcA";
-   $update = json_decode(file_get_contents("php://input"), TRUE);
-   $chatid = $update["message"]["chat"]["id"];
-   $message = $update["message"]["text"];
-   $contestacion = $update['message']['reply_to_message']['text'];
+   $token = "https://api.telegram.org/bot5224778305:AAF6INif-5hT8WgcjTtaUAdIh63iItyPDcA"; //token para acceder al bot
+   $update = json_decode(file_get_contents("php://input"), TRUE); 
+   $chatid = $update["message"]["chat"]["id"];  
+   $message = $update["message"]["text"]; //almacena lo que escribe el usuario
+   $contestacion = $update['message']['reply_to_message']['text']; //responde con una respuesta
 
 
 
 switch($message){
-   case "/start":
+   case "/start": //si escribe /start muestra el menu
       file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=Bienvenid@!" );
       file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=Comandos:");
       file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=/stream Visita mis streams en twitch");
       file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=/tiempo \"localizacion\" consulta el tiempo");
       file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=/news Consulta de noticias");
       break;
-   case "/stream":
+   case "/stream": //si escribe /stream saldrá me twitch
       file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=www.twitch.tv/pichon_alegre");
       break;
    
@@ -48,7 +48,7 @@ switch($message){
 
 
 
-
+*/
 
    //TIEMPO
 
@@ -104,5 +104,5 @@ switch($message){
       file_get_contents($url);
    }
 
-*/
+
 ?> 
