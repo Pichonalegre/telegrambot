@@ -19,20 +19,13 @@ switch($message){
    case "/stream": //si escribe /stream saldrá me twitch
       file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=www.twitch.tv/pichon_alegre");
       break;
-   
-
-      
+         
 }
 
 
-
-
-
-
-
    //START
-
 /*
+
 
    if (strpos($message, "/start") === 0) {
       file_get_contents($token."/sendMessage?chat_id=".$chatid."&text=Bienvenid@!" );
@@ -47,14 +40,10 @@ switch($message){
    }
 
 
-
+*/
 
 
    //TIEMPO
-
-
-
-
 
 
 
@@ -103,6 +92,4 @@ switch($message){
     
       file_get_contents($url);
    }
-
-*/
 ?> 
