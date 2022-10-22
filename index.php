@@ -48,11 +48,10 @@ switch($message){
 
 
 
-*/
+
 
    //TIEMPO
 
-   
 
 
 
@@ -105,5 +104,5 @@ switch($message){
       file_get_contents($url);
    }
 
-
+*/
 ?> 
